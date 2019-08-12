@@ -1,0 +1,236 @@
+*** Starting uWSGI 2.0.18 (64bit) on [Fri Aug  9 17:30:55 2019] ***
+compiled with version: 5.4.0 20160609 on 19 March 2019 03:04:45
+os: Linux-4.4.0-142-generic #168-Ubuntu SMP Wed Jan 16 21:00:45 UTC 2019
+nodename: iZuf6415vcnq43if3iq5jlZ
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /var/www/www_codelion/OCRUtils
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /var/www/www_codelion/OCRUtils
+your processes number limit is 31782
+your memory page size is 4096 bytes
+detected max file descriptor number: 65535
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uWSGI http bound on 0.0.0.0:8000 fd 4
+uwsgi socket 0 bound to TCP address 127.0.0.1:36078 (port auto-assigned) fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.5.2 (default, Nov 12 2018, 13:43:14)  [GCC 5.4.0 20160609]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x1b1ac60
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 291680 bytes (284 KB) for 3 cores
+*** Operational MODE: preforking ***
+Traceback (most recent call last):
+  File "./app.py", line 6, in <module>
+    import pytesseract
+ImportError: No module named 'pytesseract'
+unable to load app 0 (mountpoint='') (callable not found or import error)
+*** no app loaded. going in full dynamic mode ***
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 18841)
+spawned uWSGI worker 1 (pid: 18843, cores: 1)
+spawned uWSGI worker 2 (pid: 18844, cores: 1)
+spawned uWSGI worker 3 (pid: 18845, cores: 1)
+spawned uWSGI http 1 (pid: 18846)
+SIGINT/SIGQUIT received...killing workers...
+gateway "uWSGI http 1" has been buried (pid: 18846)
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+worker 3 buried after 1 seconds
+goodbye to uWSGI.
+*** Starting uWSGI 2.0.18 (64bit) on [Fri Aug  9 17:31:44 2019] ***
+compiled with version: 5.4.0 20160609 on 19 March 2019 03:04:45
+os: Linux-4.4.0-142-generic #168-Ubuntu SMP Wed Jan 16 21:00:45 UTC 2019
+nodename: iZuf6415vcnq43if3iq5jlZ
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /var/www/www_codelion/OCRUtils
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /var/www/www_codelion/OCRUtils
+your processes number limit is 31782
+your memory page size is 4096 bytes
+detected max file descriptor number: 65535
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uWSGI http bound on 0.0.0.0:5000 fd 4
+uwsgi socket 0 bound to TCP address 127.0.0.1:33772 (port auto-assigned) fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.5.2 (default, Nov 12 2018, 13:43:14)  [GCC 5.4.0 20160609]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x9c7c60
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 291680 bytes (284 KB) for 3 cores
+*** Operational MODE: preforking ***
+Traceback (most recent call last):
+  File "./app.py", line 6, in <module>
+    import pytesseract
+ImportError: No module named 'pytesseract'
+unable to load app 0 (mountpoint='') (callable not found or import error)
+*** no app loaded. going in full dynamic mode ***
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 18855)
+spawned uWSGI worker 1 (pid: 18857, cores: 1)
+spawned uWSGI worker 2 (pid: 18858, cores: 1)
+spawned uWSGI worker 3 (pid: 18859, cores: 1)
+spawned uWSGI http 1 (pid: 18860)
+--- no python application found, check your startup logs for errors ---
+[pid: 18858|app: -1|req: -1/1] 220.248.45.178 () {40 vars in 596 bytes} [Fri Aug  9 17:31:46 2019] POST / => generated 21 bytes in 0 msecs (HTTP/1.1 500) 2 headers in 83 bytes (0 switches on core 0)
+--- no python application found, check your startup logs for errors ---
+[pid: 18858|app: -1|req: -1/2] 220.248.45.178 () {40 vars in 596 bytes} [Fri Aug  9 17:31:48 2019] POST / => generated 21 bytes in 0 msecs (HTTP/1.1 500) 2 headers in 83 bytes (0 switches on core 0)
+--- no python application found, check your startup logs for errors ---
+[pid: 18858|app: -1|req: -1/3] 220.248.45.178 () {40 vars in 596 bytes} [Fri Aug  9 17:31:50 2019] POST / => generated 21 bytes in 0 msecs (HTTP/1.1 500) 2 headers in 83 bytes (0 switches on core 0)
+--- no python application found, check your startup logs for errors ---
+[pid: 18858|app: -1|req: -1/4] 220.248.45.178 () {40 vars in 596 bytes} [Fri Aug  9 17:31:50 2019] POST / => generated 21 bytes in 0 msecs (HTTP/1.1 500) 2 headers in 83 bytes (0 switches on core 0)
+--- no python application found, check your startup logs for errors ---
+[pid: 18858|app: -1|req: -1/5] 220.248.45.178 () {40 vars in 596 bytes} [Fri Aug  9 17:31:54 2019] POST / => generated 21 bytes in 0 msecs (HTTP/1.1 500) 2 headers in 83 bytes (0 switches on core 0)
+SIGINT/SIGQUIT received...killing workers...
+gateway "uWSGI http 1" has been buried (pid: 18860)
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+worker 3 buried after 1 seconds
+goodbye to uWSGI.
+*** Starting uWSGI 2.0.18 (64bit) on [Fri Aug  9 17:34:32 2019] ***
+compiled with version: 5.4.0 20160609 on 19 March 2019 03:04:45
+os: Linux-4.4.0-142-generic #168-Ubuntu SMP Wed Jan 16 21:00:45 UTC 2019
+nodename: iZuf6415vcnq43if3iq5jlZ
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /var/www/www_codelion/OCRUtils
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /var/www/www_codelion
+your processes number limit is 31782
+your memory page size is 4096 bytes
+detected max file descriptor number: 65535
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uWSGI http bound on 0.0.0.0:5000 fd 4
+uwsgi socket 0 bound to TCP address 127.0.0.1:41420 (port auto-assigned) fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.5.2 (default, Nov 12 2018, 13:43:14)  [GCC 5.4.0 20160609]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x1483c60
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 291680 bytes (284 KB) for 3 cores
+*** Operational MODE: preforking ***
+ImportError: No module named 'app'
+unable to load app 0 (mountpoint='') (callable not found or import error)
+*** no app loaded. going in full dynamic mode ***
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 18883)
+spawned uWSGI worker 1 (pid: 18884, cores: 1)
+spawned uWSGI worker 2 (pid: 18885, cores: 1)
+spawned uWSGI worker 3 (pid: 18886, cores: 1)
+spawned uWSGI http 1 (pid: 18887)
+--- no python application found, check your startup logs for errors ---
+[pid: 18884|app: -1|req: -1/1] 220.248.45.178 () {40 vars in 596 bytes} [Fri Aug  9 17:34:36 2019] POST / => generated 21 bytes in 0 msecs (HTTP/1.1 500) 2 headers in 83 bytes (0 switches on core 0)
+--- no python application found, check your startup logs for errors ---
+[pid: 18884|app: -1|req: -1/2] 220.248.45.178 () {40 vars in 596 bytes} [Fri Aug  9 17:34:41 2019] POST / => generated 21 bytes in 0 msecs (HTTP/1.1 500) 2 headers in 83 bytes (0 switches on core 0)
+SIGINT/SIGQUIT received...killing workers...
+gateway "uWSGI http 1" has been buried (pid: 18887)
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+worker 3 buried after 1 seconds
+goodbye to uWSGI.
+*** Starting uWSGI 2.0.18 (64bit) on [Fri Aug  9 17:40:06 2019] ***
+compiled with version: 5.4.0 20160609 on 19 March 2019 03:04:45
+os: Linux-4.4.0-142-generic #168-Ubuntu SMP Wed Jan 16 21:00:45 UTC 2019
+nodename: iZuf6415vcnq43if3iq5jlZ
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /var/www/www_codelion/OCRUtils
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /var/www/www_codelion/OCRUtils
+your processes number limit is 31782
+your memory page size is 4096 bytes
+detected max file descriptor number: 65535
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uWSGI http bound on 0.0.0.0:5000 fd 4
+uwsgi socket 0 bound to TCP address 127.0.0.1:33371 (port auto-assigned) fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.5.2 (default, Nov 12 2018, 13:43:14)  [GCC 5.4.0 20160609]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x1305c60
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 291680 bytes (284 KB) for 3 cores
+*** Operational MODE: preforking ***
+Traceback (most recent call last):
+  File "./app.py", line 6, in <module>
+    import pytesseract
+ImportError: No module named 'pytesseract'
+unable to load app 0 (mountpoint='') (callable not found or import error)
+*** no app loaded. going in full dynamic mode ***
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 18936)
+spawned uWSGI worker 1 (pid: 18938, cores: 1)
+spawned uWSGI worker 2 (pid: 18939, cores: 1)
+spawned uWSGI worker 3 (pid: 18940, cores: 1)
+spawned uWSGI http 1 (pid: 18941)
+--- no python application found, check your startup logs for errors ---
+[pid: 18938|app: -1|req: -1/1] 220.248.45.178 () {40 vars in 596 bytes} [Fri Aug  9 17:40:10 2019] POST / => generated 21 bytes in 0 msecs (HTTP/1.1 500) 2 headers in 83 bytes (0 switches on core 0)
+--- no python application found, check your startup logs for errors ---
+[pid: 18939|app: -1|req: -1/2] 220.248.45.178 () {40 vars in 596 bytes} [Fri Aug  9 17:40:11 2019] POST / => generated 21 bytes in 0 msecs (HTTP/1.1 500) 2 headers in 83 bytes (0 switches on core 0)
+--- no python application found, check your startup logs for errors ---
+[pid: 18938|app: -1|req: -1/3] 220.248.45.178 () {40 vars in 596 bytes} [Fri Aug  9 17:40:13 2019] POST / => generated 21 bytes in 0 msecs (HTTP/1.1 500) 2 headers in 83 bytes (0 switches on core 0)
+SIGINT/SIGQUIT received...killing workers...
+gateway "uWSGI http 1" has been buried (pid: 18941)
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+worker 3 buried after 1 seconds
+goodbye to uWSGI.
+*** Starting uWSGI 2.0.18 (64bit) on [Fri Aug  9 17:41:39 2019] ***
+compiled with version: 5.4.0 20160609 on 19 March 2019 03:04:45
+os: Linux-4.4.0-142-generic #168-Ubuntu SMP Wed Jan 16 21:00:45 UTC 2019
+nodename: iZuf6415vcnq43if3iq5jlZ
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /var/www/www_codelion/OCRUtils
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /var/www/www_codelion/OCRUtils/app
+chdir(): No such file or directory [core/uwsgi.c line 2623]
+chdir(): No such file or directory [core/uwsgi.c line 1647]
