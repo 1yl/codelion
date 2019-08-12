@@ -1,0 +1,15 @@
+certifi==2019.6.16
+chardet==3.0.4
+Django==2.2.3
+django-cors-headers==3.0.2
+django-redis==4.10.0
+djangorestframework==3.10.2
+idna==2.8
+Pillow==6.1.0
+PyMySQL==0.9.3
+pytz==2019.1
+redis==3.3.2
+requests==2.22.0
+sqlparse==0.3.0
+urllib3==1.25.3
+yunpian-python-sdk==1.0.0
