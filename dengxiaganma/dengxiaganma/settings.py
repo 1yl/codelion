@@ -202,5 +202,9 @@ WEB_HOST_NAME = 'http://188.131.183.84'
 # 图片存放路径
 WEB_IMAGE_SERVER_PATH = '/var/codelion/image/'
 WEB_PICTURE_SERVER_PATH = '/var/codelion/picture/'
+# 行驶证存放路径
+WEB_LICENCE_SERVER_PATH = '/var/codelion/driver_licence'
+# 驾驶证存放路径
+WEB_LICENSE_SERVER_PATH = '/var/codelion/driver_license'
 # 静态文件路径
 MEDIA_ROOT = os.path.join(BASE_DIR, 'http://188.131.183.84/var/codelion/').replace('\\', '/')

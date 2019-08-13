@@ -34,9 +34,35 @@ class UserRelation(models.Model):
     user_id = models.ForeignKey('User', on_delete=models.CASCADE, verbose_name='用户ID', default='', related_name='sample1')
     follower_id = models.ForeignKey('User', on_delete=models.CASCADE, verbose_name='被关注者用户ID', default='',  related_name='sample2')
 
+class BlackList(models.Model):
+    """黑名单"""
+    first_person = models.ForeignKey('User', on_delete=models.CASCADE, verbose_name='第一人称ID', default='', related_name='sample3')
+    third_person = models.ForeignKey('User', on_delete=models.CASCADE, verbose_name='第三人称ID', default='', related_name='sample4')
+
+class CarBarn(models.Model):
+    """车库"""
+    car_brand = models.CharField(max_length=50, verbose_name='车标', default='')
+    car_type = models.CharField(max_length=50, verbose_name='车型', default='')
+    car_color = models.CharField(max_length=50, verbose_name='颜色', default='')
+    car_value = models.CharField(max_length=50, verbose_name='估值', default='')
+    car_person = models.ForeignKey('User', on_delete=models.CASCADE, verbose_name='用户ID', default='')
 
 class User(models.Model):
     """用户"""
+    # SIGN_CHOICES = (
+    #     ('1', '白羊座'),
+    #     ('2', '金牛座'),
+    #     ('3', '双子座'),
+    #     ('4', '巨蟹座'),
+    #     ('5', '狮子座'),
+    #     ('6', '处女座'),
+    #     ('7', '天秤座'),
+    #     ('8', '天蝎座'),
+    #     ('9', '射手座'),
+    #     ('10', '摩羯座'),
+    #     ('11', '水瓶座'),
+    #     ('12', '双鱼座'),
+    # )
     username = models.CharField(max_length=50, verbose_name='用户昵称')
     phone = models.CharField(max_length=50, verbose_name='手机号')
     password = models.CharField(max_length=128, verbose_name='密码')
@@ -54,7 +80,12 @@ class User(models.Model):
     img_head = models.CharField(max_length=256, verbose_name='头像', default='')
     # 地区
     area = models.CharField(max_length=50, verbose_name='地区', default='')
-
+    # 行驶证
+    driver_licence = models.CharField(max_length=256, verbose_name='行驶证', default='')
+    # 驾驶证
+    driver_license = models.CharField(max_length=256, verbose_name='驾驶证', default='')
+    # 星座
+    sign = models.CharField(max_length=50, verbose_name='星座', default='')
 
     class Meta:
         db_table = 'User'
