@@ -729,3 +729,79 @@ class UploadLicense(APIView):
             return Response(Common.tureReturn(Common, data='驾驶证上传成功'))
         else:
             return Response(Common.falseReturn(Common, data='驾驶证未上传'))
+
+# TODO: 发布邀约
+class IssueInvitation(APIView):
+    def get(self, request):
+        like_list = Like.objects.all()
+        lis = []
+        for i in like_list:
+            lis.append(i.likename)
+        return Response(Common.tureReturn(Common, data=lis))
+
+# TODO: 发布活动点击单人或者多人跳转活动发布页面时话题的读取
+class TopicExist(APIView):
+    def get(self, request):
+        # 获取发布人手机号
+        phone = request.data.get("phone")
+        # 获取该用户对象
+        user_obj = User.objects.filter(phone=phone).first()
+        # 获取发布人所发表的话题（最近4条）
+        all_topic_list = Topic.objects.filter(topic_user_id=user_obj.id)
+        list1 = []
+        if len(all_topic_list) >= 4:
+            all_topic_list=all_topic_list[-4:]
+            for i in all_topic_list:
+                list1.append(i.topic_name)
+        elif len(all_topic_list) == 3:
+            for i in all_topic_list:
+                list1.append(i.topic_name)
+                list1.append("#中国有14亿护旗手")
+        elif len(all_topic_list) == 2:
+            for i in all_topic_list:
+                list1.append(i.topic_name)
+                list1.append("#中国有14亿护旗手","#在田子坊的酒吧偶遇")
+        elif len(all_topic_list) == 1:
+            for i in all_topic_list:
+                list1.append(i.topic_name)
+                list1.append("#中国有14亿护旗手","#在田子坊的酒吧偶遇","#清吧约一波")
+        else:
+            list1.append("#中国有14亿护旗手","#在田子坊的酒吧偶遇","#清吧约一波","#KTV麦霸")
+        return Response(Common.tureReturn(Common, data=list1))
+
+
+# TODO: 唱歌泡吧
+class SingingBar(APIView):
+    def post(self, request):
+        # 获取发布人手机号
+        phone = request.data.get("phone")
+        # 获取活动类型
+        activity_type = request.data.get("activity_type")
+        # 获取活动类型种类(单人/多人)
+        activity_kind = request.data.get("activity_kind")
+        # 获取该用户话题
+        activity_topic = request.data.get("activity_topic")
+        # 获取该用户活动时间
+        activity_time = request.data.get("activity_time")
+        # 获取活动出发地
+        activity_area_start = request.data.get("activity_area_start")
+        # 获取活动目的地
+        activity_area_end = request.data.get("activity_area_end")
+        # 获取参与人群性别
+        activity_person_sex = request.data.get("activity_person_sex")
+        # 获取参与人群人数
+        activity_person_num = request.data.get("activity_person_num")
+        # 获取出行方式
+        activity_car = request.data.get("activity_car")
+        # 获取你的想法
+        activity_content = request.data.get("activity_content")
+        # 获取添加图片
+        activity_img = request.data.get("activity_img")
+        data = {
+
+        }
+        return Response(Common.tureReturn(Common, data=data))
+
+# TODO: 选择出行方式进入我的车库 Mycars
+
+

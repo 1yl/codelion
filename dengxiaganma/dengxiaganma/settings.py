@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'apps.user',
+    'apps.backstage',
 ]
 
 MIDDLEWARE = [
@@ -51,6 +52,13 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# # 分页
+# REST_FRAMEWORK = {
+#     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+#     'PAGE_SIZE': 10,  # 每页数目
+# }
+
 
 # 允许所有域名跨域
 CORS_ORIGIN_ALLOW_ALL = True
@@ -128,7 +136,7 @@ DATABASES = {
         'USER': 'root',
         'PASSWORD': '123456',
         'PORT': '3306',
-    }
+    },
 }
 
 

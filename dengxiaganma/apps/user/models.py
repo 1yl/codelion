@@ -39,13 +39,57 @@ class BlackList(models.Model):
     first_person = models.ForeignKey('User', on_delete=models.CASCADE, verbose_name='第一人称ID', default='', related_name='sample3')
     third_person = models.ForeignKey('User', on_delete=models.CASCADE, verbose_name='第三人称ID', default='', related_name='sample4')
 
+class CarBrand(models.Model):
+    """车品牌"""
+    name = models.CharField(max_length=50, verbose_name='品牌名', default='')
+    initial = models.CharField(max_length=50, verbose_name='品牌名的拼音/英文名首字母', default='')
+    image_filename = models.CharField(max_length=50, verbose_name='品牌图片名', default='')
+
+
+class CarSeries(models.Model):
+    """车系"""
+    name = models.CharField(max_length=50, verbose_name='车系名', default='')
+    brand = models.ForeignKey('CarBrand', on_delete=models.CASCADE, verbose_name='所属品牌id', default='')
+
+class CarModel(models.Model):
+    """车型"""
+    name = models.CharField(max_length=50, verbose_name='车型名称', default='')
+    price = models.CharField(verbose_name='车型上市时指导价格（w）', default='', max_length=50)
+    series = models.ForeignKey('CarSeries', on_delete=models.CASCADE, verbose_name='所属车系id', default='')
+    brand = models.ForeignKey('CarBrand', on_delete=models.CASCADE, verbose_name='所属品牌id', default='')
+
 class CarBarn(models.Model):
     """车库"""
-    car_brand = models.CharField(max_length=50, verbose_name='车标', default='')
-    car_type = models.CharField(max_length=50, verbose_name='车型', default='')
-    car_color = models.CharField(max_length=50, verbose_name='颜色', default='')
-    car_value = models.CharField(max_length=50, verbose_name='估值', default='')
+    # car_brand = models.CharField(max_length=50, verbose_name='车标', default='')
+    # car_brand = models.ForeignKey('CarBrand', on_delete=models.CASCADE, verbose_name='所属品牌id', default='')
+    # car_series = models.ForeignKey('CarSeries', on_delete=models.CASCADE, verbose_name='所属车系id', default='')
+    # car_type = models.CharField(max_length=50, verbose_name='车型', default='')
+    car_model = models.ForeignKey('CarModel', on_delete=models.CASCADE, verbose_name='所属车型id', default='')
+    # car_color = models.CharField(max_length=50, verbose_name='颜色', default='')
+    # car_value = models.CharField(max_length=50, verbose_name='估值', default='')
     car_person = models.ForeignKey('User', on_delete=models.CASCADE, verbose_name='用户ID', default='')
+
+class Activity(models.Model):
+    """活动"""
+    activity_name = models.ForeignKey('Like', on_delete=models.CASCADE, verbose_name='活动名称', default='')
+    activity_type = models.CharField(max_length=50, verbose_name='活动类型', default='')
+    activity_issue = models.ForeignKey('User', on_delete=models.CASCADE, verbose_name='活动发布人', default='', related_name='sample5')
+    activity_join = models.ManyToManyField('User', verbose_name='活动参与者', default='', related_name='sample6')
+    activity_time = models.DateTimeField(auto_now_add=True, verbose_name='活动时间')
+    activity_area_start = models.CharField(max_length=50, verbose_name='活动出发地', default='')
+    activity_area_end = models.CharField(max_length=50, verbose_name='活动目的地', default='')
+    activity_person_sex = models.CharField(max_length=50, verbose_name='活动参与人群性别', default='')
+    activity_person_num = models.CharField(max_length=50, verbose_name='活动参与人群人数', default='')
+    activity_car = models.ForeignKey('CarBarn', on_delete=models.CASCADE, verbose_name='我的出行车辆', default='')
+    activity_img = models.CharField(max_length=256, verbose_name='活动添加图片', default='')
+    # 活动想法
+    activity_content = models.TextField(verbose_name='说说你的想法', default='')
+
+class Topic(models.Model):
+    """话题"""
+    topic_name = models.CharField(max_length=50, verbose_name='话题名称', default='')
+    topic_user = models.ForeignKey('User', on_delete=models.CASCADE, verbose_name='话题发布人', default='')
+    topic_time = models.DateTimeField(auto_now_add=True, verbose_name='话题发布时间')
 
 class User(models.Model):
     """用户"""
@@ -87,10 +131,9 @@ class User(models.Model):
     # 星座
     sign = models.CharField(max_length=50, verbose_name='星座', default='')
 
+
     class Meta:
         db_table = 'User'
         verbose_name = '用户'
         verbose_name_plural = verbose_name
-
-
 

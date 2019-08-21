@@ -44,4 +44,6 @@ urlpatterns = [
     path('user_uploadlicence/', UploadLicence.as_view()),
     # TODO: 驾驶证上传
     path('user_uploadlicense/', UploadLicense.as_view()),
+    # TODO: 发布邀约
+    path('user_issueinvitation/', IssueInvitation.as_view()),
 ]
