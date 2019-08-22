@@ -44,7 +44,7 @@ class Migration(migrations.Migration):
                 ('add_time', models.DateTimeField(default=django.utils.timezone.now, verbose_name='注册时间')),
                 ('use_time', models.DateTimeField(auto_now_add=True, verbose_name='最近登录时间')),
                 ('born_time', models.DateTimeField(auto_now_add=True, verbose_name='出生日期')),
-                ('sex', models.BooleanField(blank=True, verbose_name='性别')),
+                ('sex', models.CharField(verbose_name='性别', max_length=50, default='')),
                 ('job', models.CharField(max_length=50, verbose_name='职业')),
                 ('state_info', models.BooleanField(blank=True, verbose_name='信息是否完善')),
                 ('img_head', models.CharField(default='', max_length=256, verbose_name='头像')),

@@ -14,7 +14,7 @@ from ..user.models import *
 from django.contrib.auth.hashers import make_password, check_password
 import time, datetime
 from rest_framework.pagination import PageNumberPagination
-from ..backstage.serializer import BrandSerializer
+from ..backstage.serializer import BrandSerializer, SeriseSerializer, ModelSerializer
 from django.core import serializers
 
 # Create your views here.
@@ -35,6 +35,7 @@ class MyPageNumberPagination(PageNumberPagination):
     page_query_param = 'page'
 
 
+
 # TODO: 车品牌展示
 class ShowCarBrand(APIView):
     def get(self, request):
@@ -52,55 +53,34 @@ class ShowCarBrand(APIView):
                 "image_filename": i["image_filename"]
             }
             lis.append(dic)
-            # for x,y in i.items():
-            #     print(x,y)
-            # # print(i)
-            #     dic = {
-            #         "name": i["name"],
-            #         "initial": i["initial"],
-            #         "image_filename": i["image_filename"]
-            #     }
-            print(i["name"])
+        lis[0]["number"] = all_brand_objects.count()
         return Response(Common.tureReturn(Common, data=lis))
-        return Response(ser.data)
-        # print(ser.data)
-        # return Response(ser.data)
-        # aa = json.dumps(list(ser.data))
-        aa = serializers.serialize("json", ser)
-        print(aa)
 
-        # return pagination_class.get_paginated_response(ser.data)
-        # return Response(ser.data)
-
-        lis = []
-        for i in aa:
-            print(i)
-            dic = {
-                "name": i["name"],
-                "initial": i["initial"],
-                "image_filename": i["image_filename"]
-            }
-            lis.append(dic)
-        print(all_brand_objects)
-        return Response(Common.tureReturn(Common, data=lis))
 
 
 # TODO: 车系列展示
 class ShowCarSeries(APIView):
     def get(self, request):
         all_series_objects = CarSeries.objects.all()
+        # 实例化分页对象, 获取数据库中的分页数据
+        pagination_class = MyPageNumberPagination()
+        page_list = pagination_class.paginate_queryset(queryset=all_series_objects, request=request, view=self)
+        # 实例化对象
+        ser = SeriseSerializer(instance=page_list, many=True) # 可允许多个
         lis = []
-        for i in all_series_objects:
-            all_samebrand_objs = CarBrand.objects.filter(id=i.brand_id)
+        for i in ser.data:
+            print(i)
+            all_samebrand_objs = CarBrand.objects.filter(id=i["brand"])
             for j in all_samebrand_objs:
 
                 dic = {
-                    "name": i.name,
+                    "name": i["name"],
                     "brand_name": j.name,
                     "initial": j.initial,
                     "image_filename": j.image_filename
                 }
             lis.append(dic)
+        lis[0]["number"] = all_series_objects.count()
         return Response(Common.tureReturn(Common, data=lis))
 
 
@@ -108,20 +88,25 @@ class ShowCarSeries(APIView):
 class ShowCarModel(APIView):
     def get(self, request):
         all_model_objects = CarModel.objects.all()
+        # 实例化分页对象, 获取数据库中的分页数据
+        pagination_class = MyPageNumberPagination()
+        page_list = pagination_class.paginate_queryset(queryset=all_model_objects, request=request, view=self)
+        # 实例化对象
+        ser = ModelSerializer(instance=page_list, many=True)  # 可允许多个
         lis = []
-        for i in all_model_objects:
-            all_samebrand_objs = CarBrand.objects.filter(id=i.brand_id)
+        for i in ser.data:
+            all_samebrand_objs = CarBrand.objects.filter(id=i["brand"])
             for j in all_samebrand_objs:
-
                 dic = {
-                    "price": i.price,
-                    "name": i.name,
+                    "price": i["price"],
+                    "name": i["name"],
                     "brand_name": j.name,
                     "initial": j.initial,
                     "image_filename": j.image_filename
                 }
-            all_sameseries_objs = CarSeries.objects.filter(id=i.series_id)
+            all_sameseries_objs = CarSeries.objects.filter(id=i["series"])
             for x in all_sameseries_objs:
                 dic['serise_name'] = x.name
             lis.append(dic)
+        lis[0]["number"] = all_model_objects.count()
         return Response(Common.tureReturn(Common, data=lis))

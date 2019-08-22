@@ -616,11 +616,21 @@ class Mycars(APIView):
         carbarn_list = CarBarn.objects.filter(car_person_id=user_obj.id)
         lis = []
         for i in carbarn_list:
+            # 获取单车辆车型
+            single_model_obj = CarModel.objects.filter(id=i.car_model_id)
+            # 根据车型获取车的详细信息
+            # 车品牌  车系列
+            # brand_id  series_id
+            single_brand_obj = CarBrand.objects.filter(id=single_model_obj.brand_id)
+            single_series_obj = CarSeries.objects.filter(id=single_model_obj.series_id)
             dic = {
                 "car_id": i.id,
-                "car_brand": i.car_brand,
-                "car_type": i.car_type,
-                "car_color": i.car_color
+                "car_brand_name": single_brand_obj.name,
+                "car_series_name": single_series_obj.name,
+                "car_model_name": single_model_obj.name,
+                "car_price": single_model_obj.price,
+                "car_initial": single_brand_obj.initial,
+                "car_image_filename": single_brand_obj.image_filename,
             }
             lis.append(dic)
         return Response(Common.tureReturn(Common, data=lis))
@@ -803,5 +813,7 @@ class SingingBar(APIView):
         return Response(Common.tureReturn(Common, data=data))
 
 # TODO: 选择出行方式进入我的车库 Mycars
-
+class Mycars(APIView):
+    def get(self, request):
+        pass
 

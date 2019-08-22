@@ -114,7 +114,7 @@ class User(models.Model):
     use_time = models.DateTimeField(auto_now_add=True, verbose_name='最近登录时间')
     born_time = models.DateTimeField(auto_now_add=True, verbose_name='出生日期')
     # 1:man  0:woman
-    sex = models.BooleanField(blank=True, verbose_name='性别')
+    sex = models.CharField(max_length=50, verbose_name='性别', default='')
     job = models.CharField(max_length=50, verbose_name='职业')
     # 1: 已完善  0： 未完善
     state_info = models.BooleanField(blank=True, verbose_name='信息是否完善')
