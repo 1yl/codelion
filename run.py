@@ -59,16 +59,40 @@ class DealWithPic(Resource):
         print(file_path)
         # 保存图片
         img.save(file_path)
-        aa = Image.open(file_path)
-        print(aa)
+        im = Image.open(file_path)
+        # print(aa)
 
-        text = pytesseract.image_to_string(aa)
-        b = text[int(text.index("Info")):int(text.index("Mobile"))]
-        phone = b.split()[1] + b.split()[2] + b.split()[3]
-        c = text[int(text.index("Mobile")):int(text.index("Username"))]
-        name = c.split()[1].split('@')[1]
-        FlaskAPI.insert_data(data1=phone, data2=name, data3=file_path)
-        return Common.returnTrueJson(Common, data={phone: phone, name: name})
+        # 二值化
+        threshold = 140
+        table = []
+        for i in range(256):
+            if i < threshold:
+                table.append(0)
+            else:
+                table.append(1)
+        # 转化到灰度图
+        imgry = im.convert('L')
+        # 保存图像
+        imgry.save(file_path)
+        # 二值化
+        out = imgry.point(table, '1')
+        out.save(file_path)
+
+        # 识别
+        text = pytesseract.image_to_string(out)
+        print(text)
+        try:
+            b = text[int(text.index("Info")):int(text.index("Mobile"))]
+            phone = b.split()[1] + b.split()[2] + b.split()[3]
+            c = text[int(text.index("Mobile")):int(text.index("Username"))]
+            name = c.split()[1].split('@')[1]
+        except:
+            name = ''
+            FlaskAPI.insert_data(data1=phone, data2=name, data3=file_path)
+        else:
+            FlaskAPI.insert_data(data1=phone, data2=name, data3=file_path)
+
+        return Common.returnTrueJson(Common, data={"phonenumber": phone, "username": name})
 
 
 api.add_resource(DealWithPic, '/')
